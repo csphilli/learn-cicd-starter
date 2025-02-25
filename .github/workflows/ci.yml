@@ -36,3 +36,11 @@ jobs:
 
       - name: Run style check 
         run: test -z $(go fmt ./...)
+      
+      - name: Install linter
+        uses: dominikh/staticcheck-action@v1
+        with:
+          version: "latest"
+      
+      - name: Check for linting errors
+        run: staticcheck ./...
